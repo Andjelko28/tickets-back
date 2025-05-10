@@ -11,3 +11,16 @@ const register = async (user: any) => {
     }
 
 }
+
+
+const login = async (user: any) => {
+    try {
+        const result = await dbConnection.query(`select * from users where fullname = ? and password.hash = ?`,
+            [user.fullname, user.password.hash])
+        return result;
+    } catch (e: any) {
+        return { succes: false, msg: e.message }
+    }
+}
+
+export default { register, login }

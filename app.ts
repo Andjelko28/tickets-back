@@ -11,6 +11,7 @@ import userRouter from './routing/user-routes';
 
 // Promjenljiva Expressa
 const app = express();
+app.use(express.json());
 
 app.use(userRouter);
 

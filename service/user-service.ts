@@ -5,8 +5,8 @@ import jwt from 'jsonwebtoken';
 const register = async (user: any) => {
 
     // Kreiranje hesh passworda
-    user.passwordHash = crypto.createHash('md5').update(user.password).digest('hex');
-    console.log(user);
+
+    user.passwordHash = crypto.createHash('md5').update(user.passwordHash).digest('hex');
     const result = await usersRepo.register(user);
     if (result.affectedRows > 0) {
         // user je kreiran, kreiraj token za njega i posalji ga u odgovor
